@@ -1,0 +1,326 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <title>Document</title>
+
+    <!-- https://freefrontend.com/css-snow-effects/ -->
+    <!-- https://codepen.io/codeconvey/pen/xRzQay  -->
+    <style>
+        body {
+            background: darkred;
+        }
+
+        /* customizable snowflake styling */
+        .snowflake {
+            color: #fff;
+            font-size: 1em;
+            font-family: Arial;
+            text-shadow: 0 0 1px #000;
+        }
+
+        @-webkit-keyframes snowflakes-fall {
+            0% {
+                top: -10%
+            }
+            100% {
+                top: 100%
+            }
+        }
+
+        @-webkit-keyframes snowflakes-shake {
+            0% {
+                -webkit-transform: translateX(0px);
+                transform: translateX(0px)
+            }
+            50% {
+                -webkit-transform: translateX(80px);
+                transform: translateX(80px)
+            }
+            100% {
+                -webkit-transform: translateX(0px);
+                transform: translateX(0px)
+            }
+        }
+
+        @keyframes snowflakes-fall {
+            0% {
+                top: -10%
+            }
+            100% {
+                top: 100%
+            }
+        }
+
+        @keyframes snowflakes-shake {
+            0% {
+                transform: translateX(0px)
+            }
+            50% {
+                transform: translateX(80px)
+            }
+            100% {
+                transform: translateX(0px)
+            }
+        }
+
+        .snowflake {
+            position: fixed;
+            top: -10%;
+            z-index: 9999;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            cursor: default;
+            -webkit-animation-name: snowflakes-fall, snowflakes-shake;
+            -webkit-animation-duration: 10s, 3s;
+            -webkit-animation-timing-function: linear, ease-in-out;
+            -webkit-animation-iteration-count: infinite, infinite;
+            -webkit-animation-play-state: running, running;
+            animation-name: snowflakes-fall, snowflakes-shake;
+            animation-duration: 10s, 3s;
+            animation-timing-function: linear, ease-in-out;
+            animation-iteration-count: infinite, infinite;
+            animation-play-state: running, running
+        }
+
+        .snowflake:nth-of-type(0) {
+            left: 1%;
+            -webkit-animation-delay: 0s, 0s;
+            animation-delay: 0s, 0s
+        }
+
+        .snowflake:nth-of-type(1) {
+            left: 10%;
+            -webkit-animation-delay: 1s, 1s;
+            animation-delay: 1s, 1s
+        }
+
+        .snowflake:nth-of-type(2) {
+            left: 20%;
+            -webkit-animation-delay: 6s, .5s;
+            animation-delay: 6s, .5s
+        }
+
+        .snowflake:nth-of-type(3) {
+            left: 30%;
+            -webkit-animation-delay: 4s, 2s;
+            animation-delay: 4s, 2s
+        }
+
+        .snowflake:nth-of-type(4) {
+            left: 40%;
+            -webkit-animation-delay: 2s, 2s;
+            animation-delay: 2s, 2s
+        }
+
+        .snowflake:nth-of-type(5) {
+            left: 50%;
+            -webkit-animation-delay: 8s, 3s;
+            animation-delay: 8s, 3s
+        }
+
+        .snowflake:nth-of-type(6) {
+            left: 60%;
+            -webkit-animation-delay: 6s, 2s;
+            animation-delay: 6s, 2s
+        }
+
+        .snowflake:nth-of-type(7) {
+            left: 70%;
+            -webkit-animation-delay: 2.5s, 1s;
+            animation-delay: 2.5s, 1s
+        }
+
+        .snowflake:nth-of-type(8) {
+            left: 80%;
+            -webkit-animation-delay: 1s, 0s;
+            animation-delay: 1s, 0s
+        }
+
+        .snowflake:nth-of-type(9) {
+            left: 90%;
+            -webkit-animation-delay: 3s, 1.5s;
+            animation-delay: 3s, 1.5s
+        }
+
+        /* Demo Purpose Only*/
+        .demo {
+            font-family: 'Raleway', sans-serif;
+            color: #fff;
+            display: block;
+            margin: 0 auto;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .demo a {
+            font-family: 'Raleway', sans-serif;
+            color: #000;
+        }
+
+
+        /* ---------------------------- */
+        .content {
+            width: 50%;
+            margin: 10rem auto;
+            text-align: center;
+        }
+
+        #cat_word {
+            color: snow;
+            /* https://fonts.google.com/specimen/Nanum+Pen+Script?sidebar.open=true&selection.family=Nanum+Pen+Script&preview.text=%EB%82%A0%20%EB%88%8C%EB%9F%AC%EB%9D%BC%EB%83%A5~&preview.text_type=custom */
+            font-family: 'Nanum Pen Script', cursive;
+        }
+
+        #cat {
+            cursor: pointer;
+        }
+
+        #asset_author {
+            font-size: 0.1rem;
+            color: grey;
+        }
+
+        .thankyou {
+            background: ivory;
+            box-shadow: 0 0 12px 0 white;
+            padding: 10px;
+            color: brown;
+            font-family: 'Jua', sans-serif;
+            font-size: 1.3rem;
+            display: none;
+        }
+
+        .thankyou p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="content">
+    <h1 id="cat_word">날 눌러라냥~</h1>
+    <div>
+        <svg id="cat" enable-background="new 0 0 512.002 512.002" height="100" viewBox="0 0 512.002 512.002"
+             width="100" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="m228.656 80.576-90.879-74.084c-10.341-7.832-23.98-7.659-35.596-1.886-11.616 5.774-17.644 15.969-17.644 28.94l-5.522 133.903c0 8.915 7.248 16 16 16 6.227 0-2.776 4.299 132.378-76.498 9.538-5.881 10.251-19.567 1.263-26.375z"
+                fill="#727272" />
+            <path
+                d="m228.656 80.577-50.856-41.459c-36.107 11.589-68.825 30.721-95.809 56.177l-2.975 72.153c0 8.915 7.248 16 16 16 6.227 0-2.776 4.299 132.378-76.498 9.537-5.879 10.25-19.566 1.262-26.373z"
+                fill="#606060" />
+            <path
+                d="m283.331 80.576 90.879-74.084c10.341-7.832 23.98-7.659 35.596-1.886 11.616 5.774 17.644 15.969 17.644 28.94l5.522 133.903c0 8.915-7.248 16-16 16-6.227 0 2.776 4.299-132.378-76.498-9.538-5.881-10.251-19.567-1.263-26.375z"
+                fill="#727272" />
+            <path
+                d="m283.331 80.577 50.856-41.458c36.107 11.589 68.825 30.721 95.809 56.177l2.975 72.153c0 8.915-7.248 16-16 16-6.228 0 2.776 4.299-132.378-76.498-9.537-5.88-10.25-19.567-1.262-26.374z"
+                fill="#606060" />
+            <path
+                d="m256.001 298.016c-88.418 0-160.353 71.934-160.353 160.353v37.207c0 8.836 7.164 16 16 16h288.705c8.836 0 16-7.164 16-16v-37.207c.001-88.418-71.934-160.353-160.352-160.353z"
+                fill="#606060" />
+            <path
+                d="m416.109 449.565c-4.586-84.34-74.643-151.549-160.108-151.549s-155.521 67.21-160.108 151.549c94.212 60.434 223.07 62.316 320.216 0z"
+                fill="#4f4f4f" />
+            <path
+                d="m406.021 401.751c-22.932-60.56-81.524-103.735-150.02-103.735s-127.088 43.175-150.02 103.735c119.393 92.821 180.48 92.951 300.04 0z"
+                fill="#3f3f3f" />
+            <path
+                d="m406.655 114.215c-83.416-75.719-217.875-75.735-301.309 0-84.328 76.549-84.33 201.129 0 277.68 83.416 75.719 217.875 75.735 301.309 0 84.329-76.549 84.33-201.13 0-277.68z"
+                fill="#727272" />
+            <path
+                d="m406.655 315.128c-122.181 110.908-327.896 50.03-360.415-100.456-25.935 120.018 73.545 233.978 209.761 233.978 132.728 0 236.401-110.697 209.761-233.978-8.184 37.873-28.47 72.645-59.107 100.456z"
+                fill="#606060" />
+            <path
+                d="m322.964 283.549c-37.083-29.462-96.833-29.469-133.926 0-37.532 29.819-37.533 78.376 0 108.195 37.083 29.462 96.833 29.469 133.926 0 37.532-29.818 37.533-78.376 0-108.195z"
+                fill="#999" />
+            <g fill="#3d3c3c">
+                <circle cx="201.002" cy="238.081" r="19.841" />
+                <ellipse cx="310.995" cy="238.081" rx="19.841" ry="19.841"
+                         transform="matrix(.404 -.915 .915 .404 -32.442 426.366)" />
+                <path
+                    d="m326.41 324.286c-8.836 0-16 7.163-16 16 0 20.046-37.934 14.857-37.934-15.641l8.589-12.423c6.203-8.972-.219-21.218-11.126-21.218h-27.877c-10.907 0-17.328 12.246-11.126 21.218 9.876 14.285 8.589 11.754 8.589 14.141 0 14.297-11.631 25.929-25.929 25.929-6.62 0-12.005-5.386-12.005-12.006 0-8.837-7.164-16-16-16s-16 7.163-16 16c0 24.265 19.741 44.006 44.005 44.006 16.731 0 31.82-7.138 42.404-18.519 10.585 11.381 25.673 18.519 42.404 18.519 24.264 0 44.005-19.741 44.005-44.006.001-8.837-7.162-16-15.999-16z" />
+                <path
+                    d="m468.108 351.91c-2.319 0 6.781 1.702-109.912-21.968-8.66-1.757-14.257-10.201-12.5-18.861s10.197-14.257 18.861-12.5l106.714 21.646c8.66 1.757 14.257 10.201 12.5 18.861-1.537 7.586-8.21 12.822-15.663 12.822z" />
+                <path
+                    d="m43.894 351.91c-7.454 0-14.125-5.235-15.664-12.822-1.757-8.66 3.84-17.104 12.5-18.861l106.714-21.646c8.668-1.757 17.104 3.841 18.861 12.5 1.757 8.66-3.84 17.104-12.5 18.861-115.95 23.519-107.587 21.968-109.911 21.968z" />
+                <path
+                    d="m371.758 284.427c-8.148 0-15.114-6.196-15.908-14.474-.844-8.796 5.603-16.61 14.399-17.454l124.224-11.913c8.785-.851 16.611 5.603 17.454 14.399.844 8.796-5.603 16.61-14.399 17.454-132.992 12.755-124.572 11.988-125.77 11.988z" />
+                <path
+                    d="m140.244 284.427c-1.197 0 7.299.774-125.77-11.987-8.796-.844-15.243-8.658-14.399-17.454.843-8.797 8.66-15.249 17.454-14.399l124.224 11.913c8.796.844 15.243 8.658 14.399 17.454-.794 8.276-7.761 14.473-15.908 14.473z" />
+            </g>
+        </svg>
+
+
+    </div>
+    <div>
+        <br />
+        <p id="asset_author">
+            Thnks to 아이콘 제작자 <a href="https://www.flaticon.com/kr/free-icon/british-shorthair-cat_2325464"
+                                title="Vitaly Gorbachev">Vitaly
+            Gorbachev</a> <br />from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></p>
+    </div>
+
+    <br />
+    <br />
+    <div class="thankyou">
+        <img src="https://media.giphy.com/media/4Zo41lhzKt6iZ8xff9/giphy.gif" width="100px" alt="cute_dog">
+        <div>
+            <p>2020년 수고하셨습니다~</p>
+            <p>🔆</p>
+            <p>2021년 새해 복 많이 받으세요!!</p>
+            <p>-OO 올림-</p>
+        </div>
+    </div>
+</div>
+
+<div class="snowflakes" aria-hidden="true">
+
+    <div class="snowflake">
+        ❅
+    </div>
+    <div class="snowflake">
+        ❅
+    </div>
+    <div class="snowflake">
+        ❆
+    </div>
+    <div class="snowflake">
+        ❄
+    </div>
+    <div class="snowflake">
+        ❅
+    </div>
+    <div class="snowflake">
+        ❆
+    </div>
+    <div class="snowflake">
+        ❄
+    </div>
+    <div class="snowflake">
+        ❅
+    </div>
+    <div class="snowflake">
+        ❆
+    </div>
+    <div class="snowflake">
+        ❄
+    </div>
+</div>
+
+<script>
+    const cat = document.getElementById('cat');
+    cat.addEventListener('click', () => {
+        document.querySelector('.thankyou').style.display = 'block';
+        document.getElementById('cat_word').textContent = '수고했다냥~';
+    });
+</script>
+
+</body>
+</html>
